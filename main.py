@@ -414,11 +414,13 @@ class SetupCallback(Callback):
         else:
             # ModelCheckpoint callback created log directory --- remove it
             if not self.resume and os.path.exists(self.logdir):
+                import shutil
                 dst, name = os.path.split(self.logdir)
                 dst = os.path.join(dst, 'child_runs', name)
                 os.makedirs(os.path.split(dst)[0], exist_ok=True)
                 try:
-                    os.rename(self.logdir, dst)
+                    #os.rename(self.logdir, dst)
+                    shutil.move(self.logdir, dst)
                 except FileNotFoundError:
                     pass
 
