@@ -222,6 +222,7 @@ class WrappedDataset(Dataset):
 
 
 def worker_init_fn(_):
+    print(f"entering worker_init_fn...")
     worker_info = torch.utils.data.get_worker_info()
 
     dataset = worker_info.dataset
