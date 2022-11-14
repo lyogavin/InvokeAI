@@ -77,28 +77,15 @@ data:
     num_workers: 2
     wrap: false
     train:
-      target: ldm.data.simple.hf_dataset
+      target: ldm.data.title_to_image.TitleToImageDataset
       params:
-        name: /home/ubuntu/cloudfs/ghost_data/newred_redbook_link_download/txt2image_dataset
-        image_transforms:
-          - target: torchvision.transforms.Resize
-            params:
-              size: 512
-              interpolation: 3
-          - target: torchvision.transforms.RandomCrop
-            params:
-              size: 512
-          - target: torchvision.transforms.RandomHorizontalFlip
+        size: 512
+        set: train
     validation:
-      target: ldm.data.simple.TextOnly
+      target: ldm.data.title_to_image.TitleToImageDataset
       params:
-        captions:
-          - "A pokemon with green eyes, large wings, and a hat"
-          - "A cute bunny rabbit"
-          - "Yoda"
-          - "An epic landscape photo of a mountain"
-        output_size: 512
-        n_gpus: 2 # small hack to make sure we see all our samples
+        size: 512
+        set: val
 
 lightning:
   modelcheckpoint:
