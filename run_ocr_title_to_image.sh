@@ -24,7 +24,7 @@ NAME=finetune_ocr_title_to_image_$run_ts
 
 python3 ./main.py -t \
     --base ./configs/stable-diffusion/v1-finetune_ocr_title_to_image.yaml \
-    --actual_resume ./models/ldm/stable-diffusion-v1/model.ckpt \
+    --actual_resume ./models/ldm/stable-diffusion-v1/v1-5-pruned-emaonly.ckpt \
     -n $NAME \
     --gpus 0,1,2,3,4,5,6,7 \
     --data_root $ROOT_DIR \
