@@ -15,6 +15,7 @@ import random
 class TitleToImageDataset(Dataset):
     def __init__(
         self,
+        data_root,
         df_path,
         size=None,
         interpolation='bicubic',
