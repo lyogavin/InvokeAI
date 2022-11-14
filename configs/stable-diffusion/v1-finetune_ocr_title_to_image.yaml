@@ -81,11 +81,13 @@ data:
       params:
         size: 512
         set: train
+        df_path: /home/ubuntu/cloudfs/ghost_data/newred_redbook_link_download/merged_newred_redbook_downloads_with_album_ocr_title_trasnlsated_1662701835.csv.tgz
     validation:
       target: ldm.data.title_to_image.TitleToImageDataset
       params:
         size: 512
         set: val
+        df_path: /home/ubuntu/cloudfs/ghost_data/newred_redbook_link_download/merged_newred_redbook_downloads_with_album_ocr_title_trasnlsated_1662701835.csv.tgz
 
 lightning:
   modelcheckpoint:
