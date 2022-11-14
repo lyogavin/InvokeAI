@@ -20,7 +20,7 @@ else
   echo ${ROOT_DIR} exist!!!!!!!!!!!!!!!
 fi
 
-NAME=finetune_ocr_title_to_image_$(run_ts)
+NAME=finetune_ocr_title_to_image_$run_ts
 
 python3 ./main.py -t \
     --base ./configs/stable-diffusion/v1-finetune_ocr_title_to_image.yaml \
