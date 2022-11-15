@@ -20,7 +20,7 @@ else
   echo ${ROOT_DIR} exist!!!!!!!!!!!!!!!
 fi
 
-ROOT_LOGS_DIR=/home/ubuntu/cloudfs/saved_models/stable_diffusion/finetune_redbook_ocr/logs
+ROOT_LOGS_DIR=/home/ubuntu/cloudfs/saved_models/stable_diffusion/finetune_redbook_ocr_logs
 
 if [ ! -d ${ROOT_LOGS_DIR} ];then
   mkdir -p ${ROOT_LOGS_DIR}
