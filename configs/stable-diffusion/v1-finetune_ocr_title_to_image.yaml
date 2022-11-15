@@ -68,10 +68,7 @@ model:
           target: torch.nn.Identity
 
     cond_stage_config:
-      target: ldm.modules.encoders.modules.BERTEmbedder
-      params:
-        n_embed: 1280
-        n_layer: 32
+      target: ldm.modules.encoders.modules.FrozenCLIPEmbedder
 
 data:
   target: main.DataModuleFromConfig
@@ -108,7 +105,7 @@ lightning:
     benchmark: True
     max_steps: 4000000
     num_processes: 1
-    
+
 #    accelerator: gpu, by default auto, all gpus
 #    max_steps: 4000
     
