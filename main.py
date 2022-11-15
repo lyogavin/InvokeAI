@@ -386,6 +386,10 @@ class SetupCallback(Callback):
             os.makedirs(self.ckptdir, exist_ok=True)
             os.makedirs(self.cfgdir, exist_ok=True)
 
+            assert os.path.exists(self.cfgdir), f"{self.cfgdir} should exist"
+            assert os.path.exists(self.logdir), f"{self.logdir} should exist"
+            assert os.path.exists(self.ckptdir), f"{self.ckptdir} should exist"
+
             if 'callbacks' in self.lightning_config:
                 if (
                     'metrics_over_trainsteps_checkpoint'
@@ -397,6 +401,13 @@ class SetupCallback(Callback):
                     )
             print('Project config')
             print(OmegaConf.to_yaml(self.config))
+
+            assert os.path.exists(self.cfgdir), f"{self.cfgdir} should exist"
+            assert os.path.exists(self.logdir), f"{self.logdir} should exist"
+            assert os.path.exists(self.ckptdir), f"{self.ckptdir} should exist"
+
+            print(f"saving to {os.path.join(self.cfgdir, '{}-project.yaml'.format(self.now))}")
+
             OmegaConf.save(
                 self.config,
                 os.path.join(self.cfgdir, '{}-project.yaml'.format(self.now)),
