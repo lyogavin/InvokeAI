@@ -107,6 +107,7 @@ lightning:
   trainer:
     benchmark: True
     max_steps: 4000000
+    num_processes: 1
 #    accelerator: gpu, by default auto, all gpus
 #    max_steps: 4000
     
