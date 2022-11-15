@@ -382,9 +382,15 @@ class SetupCallback(Callback):
     def on_pretrain_routine_start(self, trainer, pl_module):
         if trainer.global_rank == 0:
             # Create logdirs and save configs
+            print(f"mmakedirs: {self.logdir}")
+            print(f"mmakedirs: {self.ckptdir}")
+            print(f"mmakedirs: {self.cfgdir}")
+
             os.makedirs(self.logdir, exist_ok=True)
             os.makedirs(self.ckptdir, exist_ok=True)
             os.makedirs(self.cfgdir, exist_ok=True)
+
+
 
             assert os.path.exists(self.cfgdir), f"{self.cfgdir} should exist"
             assert os.path.exists(self.logdir), f"{self.logdir} should exist"
@@ -430,9 +436,13 @@ class SetupCallback(Callback):
                 dst = os.path.join(dst, 'child_runs', name)
                 os.makedirs(os.path.split(dst)[0], exist_ok=True)
                 try:
-                    #os.rename(self.logdir, dst)
-                    shutil.move(self.logdir, dst)
-                except FileNotFoundError:
+                    os.rename(self.logdir, dst)
+                    #shutil.move(self.logdir, dst)
+                except OSError as oe:
+                    print(f"error: {oe}")
+                    pass
+                except FileNotFoundError as fnfe:
+                    print(f"error: {fnfe}")
                     pass
 
 
