@@ -68,7 +68,10 @@ model:
           target: torch.nn.Identity
 
     cond_stage_config:
-      target: ldm.modules.encoders.modules.FrozenCLIPEmbedder
+      target: ldm.modules.encoders.modules.BERTEmbedder
+      params:
+        n_embed: 1280
+        n_layer: 32
 
 data:
   target: main.DataModuleFromConfig
